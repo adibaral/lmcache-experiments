@@ -1,0 +1,3 @@
+chunk_size: 256
+remote_url: "redis://localhost:6379"
+remote_serde: "naive"
