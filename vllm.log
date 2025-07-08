@@ -1,2 +1,0 @@
-2025-07-08 14:03:55,524 - INFO - __init__.py:resolve_current_platform_cls_qualname:248 - No platform detected, vLLM is running on UnspecifiedPlatform
-2025-07-08 14:04:00,584 - INFO - config.py:_verify_args:1980 - Disabled the custom all-reduce kernel because it is not supported on current platform.
