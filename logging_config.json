@@ -1,0 +1,75 @@
+{
+    "version": 1,
+    "force": true,
+    "disable_existing_loggers": true,
+    "formatters": {
+        "default": {
+            "format": "%(asctime)s - %(levelname)s - %(filename)s:%(funcName)s:%(lineno)d - %(message)s"
+        }
+    },
+    "handlers": {
+        "vllm_file": {
+            "class": "logging.FileHandler",
+            "formatter": "default",
+            "filename": "vllm.log",
+            "mode": "w",
+            "encoding": "utf-8"
+        },
+        "lmcache_file": {
+            "class": "logging.FileHandler",
+            "formatter": "default",
+            "filename": "lmcache.log",
+            "mode": "w",
+            "encoding": "utf-8"
+        }
+    },
+    "root": {
+        "level": "INFO",
+        "handlers": [
+            "vllm_file"
+        ]
+    },
+    "loggers": {
+        "LMCache": {
+            "level": "INFO",
+            "handlers": [
+                "lmcache_file"
+            ],
+            "propagate": true
+        },
+        "lmcache.integration": {
+            "level": "INFO",
+            "handlers": [
+                "lmcache_file"
+            ],
+            "propagate": true
+        },
+        "lmcache.v1": {
+            "level": "INFO",
+            "handlers": [
+                "lmcache_file"
+            ],
+            "propagate": true
+        },
+        "uvicorn": {
+            "level": "INFO",
+            "handlers": [],
+            "propagate": false
+        },
+        "uvicorn.error": {
+            "level": "INFO",
+            "handlers": [],
+            "propagate": false
+        },
+        "uvicorn.access": {
+            "level": "INFO",
+            "handlers": [],
+            "propagate": false
+        },
+        "httpx": {
+            "level": "WARNING",
+            "handlers": [],
+            "propagate": false
+        }
+    }
+}

@@ -1,0 +1,4 @@
+.idea/
+.vscode/
+.ruff_cache/
+__pycache__/
