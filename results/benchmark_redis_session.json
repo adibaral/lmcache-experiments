@@ -1,0 +1,286 @@
+[
+    {
+        "_id": 0,
+        "query": "Does Joan have any pets?",
+        "metrics": {
+            "request_id": "chatcmpl-2378f392e50c471cbfe136462804e915",
+            "prompt": "Does Joan have any pets?",
+            "content": "Yes, Joan has two rescue cats, a black one named Midnight and a calico one named Luna.",
+            "total_tokens": 28,
+            "completion_tokens": 21,
+            "prompt_tokens": 7,
+            "tfft": 0.49373659800039604,
+            "response_time": 0.9318013299998711
+        }
+    },
+    {
+        "_id": 1,
+        "query": "What kind of cheese does Joan like the most?",
+        "metrics": {
+            "request_id": "chatcmpl-118eb3e0c1bc4d6cb34f485cb934ac79",
+            "prompt": "What kind of cheese does Joan like the most?",
+            "content": "According to the conversation, Joan's favorite cheese is sharp cheddar. She mentioned that she likes it with honey and almonds.",
+            "total_tokens": 36,
+            "completion_tokens": 25,
+            "prompt_tokens": 11,
+            "tfft": 0.11736123200535076,
+            "response_time": 0.5740028090003761
+        }
+    },
+    {
+        "_id": 2,
+        "query": "Where does Joan volunteer?",
+        "metrics": {
+            "request_id": "chatcmpl-e61c334e8ad44d88b369a63a7c610449",
+            "prompt": "Where does Joan volunteer?",
+            "content": "Joan volunteers at a food bank, helping to feed hungry kids. She mentioned that she goes there on Mondays and Wednesdays.",
+            "total_tokens": 33,
+            "completion_tokens": 27,
+            "prompt_tokens": 6,
+            "tfft": 0.10439307100023143,
+            "response_time": 0.602231363998726
+        }
+    },
+    {
+        "_id": 3,
+        "query": "Which days does Joan volunteer at the food bank?",
+        "metrics": {
+            "request_id": "chatcmpl-6e8a6f1b14c2454eba8f49a970524e8a",
+            "prompt": "Which days does Joan volunteer at the food bank?",
+            "content": "Joan volunteers at the food bank on Mondays and Wednesdays.",
+            "total_tokens": 25,
+            "completion_tokens": 14,
+            "prompt_tokens": 11,
+            "tfft": 0.10616112400020938,
+            "response_time": 0.3641255080001429
+        }
+    },
+    {
+        "_id": 4,
+        "query": "Is Joan planning to volunteer abroad? If yes, where?",
+        "metrics": {
+            "request_id": "chatcmpl-5b631ca237a343f4ad839466ac8bf90d",
+            "prompt": "Is Joan planning to volunteer abroad? If yes, where?",
+            "content": "Yes, Joan is planning to volunteer abroad. She mentioned that she's looking into organizations that help feed kids in Africa or Southeast Asia.",
+            "total_tokens": 40,
+            "completion_tokens": 27,
+            "prompt_tokens": 13,
+            "tfft": 0.10985876199993072,
+            "response_time": 0.6070531429941184
+        }
+    },
+    {
+        "_id": 5,
+        "query": "What cheeses does Grace prefer for a cheese board?",
+        "metrics": {
+            "request_id": "chatcmpl-e24f49eb8752419db7bec644ea44bd72",
+            "prompt": "What cheeses does Grace prefer for a cheese board?",
+            "content": "According to the conversation, Grace prefers brie, gouda, and goat cheese for a cheese board.",
+            "total_tokens": 33,
+            "completion_tokens": 22,
+            "prompt_tokens": 11,
+            "tfft": 0.1100497559964424,
+            "response_time": 0.51157782899827
+        }
+    },
+    {
+        "_id": 6,
+        "query": "What dish did Grace recently make with chicken?",
+        "metrics": {
+            "request_id": "chatcmpl-f8c2071c2e6c4c26bce9eb947c9f023e",
+            "prompt": "What dish did Grace recently make with chicken?",
+            "content": "Grace recently made a chicken salad with a zesty lemon dressing.",
+            "total_tokens": 23,
+            "completion_tokens": 13,
+            "prompt_tokens": 10,
+            "tfft": 0.11134466899966355,
+            "response_time": 0.3525026319985045
+        }
+    },
+    {
+        "_id": 7,
+        "query": "Does Joan have any food allergies?",
+        "metrics": {
+            "request_id": "chatcmpl-c690775b541547c19f9ca68d217ddecc",
+            "prompt": "Does Joan have any food allergies?",
+            "content": "Yes, Joan mentioned that she is allergic to seafood.",
+            "total_tokens": 19,
+            "completion_tokens": 11,
+            "prompt_tokens": 8,
+            "tfft": 0.10847847699915292,
+            "response_time": 0.30885800100077176
+        }
+    },
+    {
+        "_id": 8,
+        "query": "What is Joan's favorite cheese to put on chicken salad?",
+        "metrics": {
+            "request_id": "chatcmpl-7ec0c1e850614a6b9cc944627ddd49c2",
+            "prompt": "What is Joan's favorite cheese to put on chicken salad?",
+            "content": "Joan's favorite cheese to put on chicken salad is goat cheese.",
+            "total_tokens": 27,
+            "completion_tokens": 14,
+            "prompt_tokens": 13,
+            "tfft": 0.11520610199659131,
+            "response_time": 0.37144746499689063
+        }
+    },
+    {
+        "_id": 9,
+        "query": "What herbs did Grace use in her chicken salad?",
+        "metrics": {
+            "request_id": "chatcmpl-2e81d7b088a04f71a43e9a387271e011",
+            "prompt": "What herbs did Grace use in her chicken salad?",
+            "content": "Grace used parsley, dill, and chives in her chicken salad.",
+            "total_tokens": 26,
+            "completion_tokens": 15,
+            "prompt_tokens": 11,
+            "tfft": 0.10909174799598986,
+            "response_time": 0.3860740460004308
+        }
+    },
+    {
+        "_id": 10,
+        "query": "Did Grace get a role in a dance audition?",
+        "metrics": {
+            "request_id": "chatcmpl-63d82488998a45959f605783679918fd",
+            "prompt": "Did Grace get a role in a dance audition?",
+            "content": "Yes, Grace mentioned that she did get a role in a dance audition.",
+            "total_tokens": 26,
+            "completion_tokens": 15,
+            "prompt_tokens": 11,
+            "tfft": 0.11152252299507381,
+            "response_time": 0.3868653479948989
+        }
+    },
+    {
+        "_id": 11,
+        "query": "How did Joan celebrate her mom's birthday?",
+        "metrics": {
+            "request_id": "chatcmpl-a54e5d8c0e4b4ccabbe58dbd156f06d2",
+            "prompt": "How did Joan celebrate her mom's birthday?",
+            "content": "Joan celebrated her mom's birthday with a nice cozy night at home with a homemade dinner and cake.",
+            "total_tokens": 31,
+            "completion_tokens": 21,
+            "prompt_tokens": 10,
+            "tfft": 0.11304989700147416,
+            "response_time": 0.4995723430038197
+        }
+    },
+    {
+        "_id": 12,
+        "query": "What new item did Grace buy for ballet?",
+        "metrics": {
+            "request_id": "chatcmpl-f12270e5158e4cf288ba86660aab821b",
+            "prompt": "What new item did Grace buy for ballet?",
+            "content": "Grace bought new ballet shoes.",
+            "total_tokens": 16,
+            "completion_tokens": 6,
+            "prompt_tokens": 10,
+            "tfft": 0.11589997799455887,
+            "response_time": 0.22769290499854833
+        }
+    },
+    {
+        "_id": 13,
+        "query": "What are the names and colors of Joan's rescue cats?",
+        "metrics": {
+            "request_id": "chatcmpl-c1f27a8e62754ebea7b6756e9924cf8e",
+            "prompt": "What are the names and colors of Joan's rescue cats?",
+            "content": "Joan's rescue cats are named Midnight (black) and Luna (calico).",
+            "total_tokens": 30,
+            "completion_tokens": 17,
+            "prompt_tokens": 13,
+            "tfft": 0.11476873699575663,
+            "response_time": 0.42864830100006657
+        }
+    },
+    {
+        "_id": 14,
+        "query": "What kind of honey does Joan usually use with cheese?",
+        "metrics": {
+            "request_id": "chatcmpl-f818cccf20944db1a5527f886092409e",
+            "prompt": "What kind of honey does Joan usually use with cheese?",
+            "content": "Joan usually uses local raw honey with cheese.",
+            "total_tokens": 22,
+            "completion_tokens": 10,
+            "prompt_tokens": 12,
+            "tfft": 0.1162217269957182,
+            "response_time": 0.3058988179982407
+        }
+    },
+    {
+        "_id": 15,
+        "query": "What cheeses are recommended for non-seafood dishes?",
+        "metrics": {
+            "request_id": "chatcmpl-83ef7fc7d4594a8c903ef7c46323c220",
+            "prompt": "What cheeses are recommended for non-seafood dishes?",
+            "content": "According to the conversation, brie and caramelized onions are a recommended pairing for non-seafood dishes.",
+            "total_tokens": 34,
+            "completion_tokens": 22,
+            "prompt_tokens": 12,
+            "tfft": 0.10939725500065833,
+            "response_time": 0.5167280399982701
+        }
+    },
+    {
+        "_id": 16,
+        "query": "What kind of bread does Joan like to have with cheese?",
+        "metrics": {
+            "request_id": "chatcmpl-ad1c386f2b4c4bd29f2388155927b7df",
+            "prompt": "What kind of bread does Joan like to have with cheese?",
+            "content": "Joan likes to have crunchy bread with cheese.",
+            "total_tokens": 23,
+            "completion_tokens": 10,
+            "prompt_tokens": 13,
+            "tfft": 0.11875633899762761,
+            "response_time": 0.30401786800211994
+        }
+    },
+    {
+        "_id": 17,
+        "query": "What is Grace's favorite cheese and pairing?",
+        "metrics": {
+            "request_id": "chatcmpl-bf3afebc2e394da7a87b2c616e955c0d",
+            "prompt": "What is Grace's favorite cheese and pairing?",
+            "content": "Grace's favorite cheese is brie, and she likes it paired with fruit and bread.",
+            "total_tokens": 28,
+            "completion_tokens": 18,
+            "prompt_tokens": 10,
+            "tfft": 0.11218611300137127,
+            "response_time": 0.4471979080044548
+        }
+    },
+    {
+        "_id": 18,
+        "query": "Did Joan share any pictures or talk about sharing photos?",
+        "metrics": {
+            "request_id": "chatcmpl-86e0cd89c50c4f6685a6544a4ef1f9fb",
+            "prompt": "Did Joan share any pictures or talk about sharing photos?",
+            "content": "Yes, Joan mentioned that she would share a picture of her chicken salad after making it, but it seems that she didn't actually share the picture in the conversation.",
+            "total_tokens": 45,
+            "completion_tokens": 33,
+            "prompt_tokens": 12,
+            "tfft": 0.11435450799763203,
+            "response_time": 0.7210113459950662
+        }
+    },
+    {
+        "_id": 19,
+        "query": "What's Grace's favorite pasta dish?",
+        "metrics": {
+            "request_id": "chatcmpl-85f42b829869495da68ad79e60af0b95",
+            "prompt": "What's Grace's favorite pasta dish?",
+            "content": "Grace's favorite pasta dish is shrimp scampi.",
+            "total_tokens": 20,
+            "completion_tokens": 11,
+            "prompt_tokens": 9,
+            "tfft": 0.11615919600444613,
+            "response_time": 0.32074610800191294
+        }
+    },
+    {
+        "duration": 9.223531044000993,
+        "total_queries": 20
+    }
+]

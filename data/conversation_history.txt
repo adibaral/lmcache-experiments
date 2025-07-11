@@ -1,0 +1,99 @@
+User: Hey Grace! Great to see you! How've you been since we last met? Anything new to tell?
+
+Assistant: Hey Joan! Good to see you. I just got some new ballet shoes since last time we hung out. Friday's class rocked!
+
+User: That's great, Glad you're having fun with dance classes. I started volunteering at a food bank, helping feed hungry kids. It's been awesome!
+
+Assistant: Wow, volunteering there sounds great. How often do you go?
+
+User: I go there Mondays and Wednesdays. It's important to me.
+
+Assistant: Nice! Do you plan to do more of that in the future?
+
+User: Yep, definitely! I'm looking into orgs that help feed kids abroad and, if all goes well, I'll be volunteering overseas this month.
+
+Assistant: That sounds amazing! Where are you looking at going? Need a hand with your research?
+
+User: I'm looking into volunteering in Africa or Southeast Asia next month. Could you offer any advice on where to look for good organizations to work with? Thanks!
+
+Assistant: I don't know much about volunteering in Asia, but I have in Africa. I'm happy to help you out with research. Wanna meet up next week so I can give you some online resources?
+
+User: You look busy but that'd be great! Thanks heaps for the help. Really appreciate it. Let's meet up next week and take a look at your stuff. I got this together for a hangout I had with buddies recently. I'm always trying out new combos for cheese boards. You into cheese too?
+
+Assistant: That looks yummy! I'm a cheese lover but my fave's gotta be brie. Creamy and delicious with fruit and bread - what about you? Any cheese that stands out?
+
+User: Thanks! Brie's a hit. My fave cheese is sharp cheddar. That bold flavor goes so well with honey and almonds. What cheeses do you like?
+
+Assistant: That looks great. I love gouda and goat cheese! Such unique flavors and add a great variety to a cheeseboard. Got any favorites as sides?
+
+User: I love my cheese with crunchy bread, grapes and fig spread - so sweet and yummy! What do you usually have with it?
+
+Assistant: I like it with wine. What type of honey do you like with your cheese and crackers? The sweetness goes great with the cheese.
+
+User: I usually use local raw honey 'cause it's got a nice taste. Anything else you'd recommend I try on a cheeseboard?
+
+Assistant: I haven't had much honey, but lavender and acacia are both great! They'd be a nice addition to your cheese platter.
+
+User: That looks great. Sorry to cut off the converation but I have to run some errands.
+
+Assistant: No problem, Joan. Catch you later!
+
+User: See ya next week! Stay safe. Yo Grace! Long time no see. Hope you're doin' alright. Get this: I made up this sick cheese platter for a friend. I put blue with fig jam and it was fire!
+
+Assistant: Hey Joan! Doing good! That looks delish! Here's a pic of my go-to dish, chicken salad. Made this last month. Any fave cheese you'd pair it with?
+
+User: Thanks! That looks great. I love putting goat cheese on it. The tang works great. What's your fave dish to make?
+
+Assistant: Thanks! That is a great idea. I make loads of pasta dishes like shrimp scampi. Check out this pic - have you tried it?
+
+User: Ooh, that looks so good! I'm allergic to seafood though, so haven't tried making it. Tell me more about your recipe!
+
+Assistant: Thanks! Sorry to hear that. My shrimp scampi uses shrimp, garlic, butter, white wine, lemon juice and parsley - it's tasty! Any other allergies or dietary restrictions?
+
+User: Thanks for the recipe! It looks yummy. Any cheese recommendations for non-seafood dishes?
+
+Assistant: Yeah, I love it! Brie and caramelized onions are a match made in heaven. Have you tried 'em?
+
+User: That pairing sounds amazing! I'll give it a go. How's your fam doing?
+
+Assistant: My fam's doing great, glad you asked! My parents are stoked about my latest dance audition. How's your fam?
+
+User: Congrats on the audition! Did you get the spot? My fam's doing OK, we celebrated my mom's B-day in New York.
+
+Assistant: Yes I did! Also, happy bday to your mom! How'd you celebrate?
+
+User: Thanks! We had a nice cozy night at home with a homemade dinner and cake - it was great!
+
+Assistant: Hi Joan! Long time no talk. How's it going? Trying any new cheese recipes lately?
+
+User: Hey Grace! Great to hear from you. Got two rescue cats yesterday, a black one called Midnight and a calico one called Luna - they've been keeping me busy. No fancy dinners for me, but what about you? Any yummy adventures?
+
+Assistant: Hey Joan! Congrats on the rescue cats. I'm having fun in the kitchen too. I made this awesome chicken salad with some zesty lemon dressing - everyone loved it. I'm reading an old dance magazine while waiting for my new silver electric kettle to whistle. It's boiling chicken for soup, and it smells so good in my living room.  What have you been up to?
+
+User: That sounds great! Trying different takes on classic dishes is always fun. Does the boiled chicken taste as good as it looks? Got any pics of your cooking? Would love to see them!
+
+Assistant: Yup! Here's a pic of the chicken salad I made with the lemon dressing and some cheddar. Delicious! Wanna get the recipe?
+
+User: Yum! That looks so good! What herbs did you use? The colors are great.
+
+Assistant: Thanks! I used parsley, dill and chives to liven up the chicken salad. It added a nice freshness and aroma. Wanna know the recipe?
+
+User: Sure! Making that sounds great?
+
+Assistant: Sure thing! Here ya go - making the chicken salad with that zesty lemon dressing:
+
+User: Thanks! I'm gonna make this recipe for sure. Can't wait!
+
+Assistant: Glad you're keen on giving it a go. Let me know how it goes. Have fun!
+
+User: Will do! I'll snap a pic of my chicken salad and share it. Thanks for the recipe!
+
+Assistant: No problem! Can't wait to see what you do with the chicken salad. Have fun cooking!
+
+User: Thanks! Can't wait to try my version. Good luck cooking!
+
+Assistant: Thanks! I'm gonna try out new recipes and bust out my best moves. Bye!
+
+User: Stay passionate about dancing too! Take it easy, chat soon.
+
+Assistant: Thanks again! I'll keep on dancing and cooking. Bye until tomorrow!

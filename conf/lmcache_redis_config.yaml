@@ -1,0 +1,16 @@
+# 256 Tokens per KV Chunk
+chunk_size: 256
+# Redis host
+remote_url: "redis://localhost:6379"
+# Redis Sentinel hosts (for high availability)
+# remote_url: "redis-sentinel://localhost:26379,localhost:26380,localhost:26381"
+# LMCache Server host
+# remote_url: "lm://localhost:65432"
+
+# How to serialize and deserialize KV cache on remote transmission
+remote_serde: "naive" # "naive" (default) or "cachegen"
+
+# enable_controller: True
+# lmcache_instance_id: "lmcache_default_instance"
+# controller_url: "localhost:9001"
+# lmcache_worker_url: "localhost:8001"
