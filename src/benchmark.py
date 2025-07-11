@@ -1,6 +1,7 @@
 import argparse
 from tqdm.auto import tqdm
 import json
+import random
 import time
 from transformers import AutoTokenizer
 from utils.client import VLLMClient
@@ -16,56 +17,61 @@ def load_queries(file_path: str) -> list[str]:
         queries = [line.strip() for line in file if line.strip()]
     return queries
 
-def load_context(file_path: str, truncate:bool=True, model_path: str=None, max_ctx_tokens: int = 10800, safety_margin:int=2048) -> str:
+def load_contexts(file_paths: list[str], truncate:bool=True, model_path: str=None, max_ctx_tokens: int = 10800, safety_margin:int=2048) -> list[str]:
     """
-    Load context from a file.
+    Load contexts from a file.
 
     Args:
-        file_path (str): Path to the context file.
+        file_paths (list[str]): List of paths to the context files.
         truncate (bool): Whether to truncate the context to fit within the model's context length.
         model_path (str): Model identifier to determine max context length.
         max_ctx_tokens (int): Maximum context tokens allowed, default is 4096.
         safety_margin (int): Safety margin to keep below the model's max context length.
     Returns:
-        str: Truncated context string.
+        list[str]: List of contexts loaded from the files, truncated if specified.
     """
-    if file_path.endswith('.json'):
-        with open(file_path, 'r') as f:
-            context_obj = json.load(f)
-        raw_context = json.dumps(context_obj, indent=4)
-    else:
-        with open(file_path, 'r') as f:
-            raw_context = f.read()
-    
+    raw_contexts = list()
+    for file_path in file_paths:
+        if file_path.endswith(".json"):
+            with open(file_path, "r") as f:
+                context_obj = json.load(f)
+            raw = json.dumps(context_obj, indent=4)
+        else:
+            with open(file_path, "r") as f:
+                raw = f.read()
+        raw_contexts.append(raw.strip())
+
     if not truncate:
-        return raw_context.strip()
+        return raw_contexts
 
-    try:
-        tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
-        model_max_length = tokenizer.model_max_length if tokenizer.model_max_length > 0 else max_ctx_tokens
-        max_allowed_tokens = max_ctx_tokens - safety_margin
-        max_allowed_tokens = min(model_max_length - safety_margin, max_allowed_tokens)
-        encoded_ids = tokenizer.encode(raw_context, add_special_tokens=False, truncation=True, max_length=max_allowed_tokens)
+    num_contexts = len(raw_contexts)
+    tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
+    model_max_length = tokenizer.model_max_length if tokenizer.model_max_length > 0 else max_ctx_tokens
+    max_allowed_tokens = min(model_max_length - safety_margin, max_ctx_tokens)
+    
+    truncated_contexts = list()
+    tokens_per_context = max_allowed_tokens // num_contexts
+    for raw_context in raw_contexts:
+        encoded_ids = tokenizer.encode(raw_context, add_special_tokens=False, truncation=True, max_length=tokens_per_context)
         truncated_context = tokenizer.decode(encoded_ids, skip_special_tokens=True)
-    except Exception:
-        char_limit = (max_ctx_tokens - safety_margin) * 4
-        truncated_context = raw_context[:char_limit]
-
-    return truncated_context.strip()
+        truncated_contexts.append(truncated_context.strip())
+    return truncated_contexts
 
 
-def build_history_from_context(context: str, system_prompt: str) -> list[dict]:
+def build_history_from_contexts(contexts: list[str], system_prompt: str) -> list[dict]:
     """
-    Build the chat history from the context and system prompt.
+    Build the chat history from the contexts and system prompt.
     
     Args:
-        context (str): The context to include in the chat history.
+        contexts (list[str]): List of context strings to include in the chat history.
         system_prompt (str): The system prompt to initialize the chat.
     
     Returns:
         list[dict]: The chat history as a list of dictionaries.
     """
-    if context:
+    if contexts:
+        random.shuffle(contexts)
+        context = "\n\n".join(contexts)
         return [
             # {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"I've got a document:\n```\n{context}\n```"},
@@ -75,7 +81,7 @@ def build_history_from_context(context: str, system_prompt: str) -> list[dict]:
         return [{"role": "system", "content": system_prompt}]
 
 
-def run_query_benchmark(model_path:str, client: VLLMClient, queries: list[str], context: str, system_prompt: str):
+def run_query_benchmark(model_path:str, client: VLLMClient, queries: list[str], contexts: list[str], system_prompt: str):
     """
     Run the benchmark per query by sending queries to the VLLM server and collecting results.
 
@@ -83,7 +89,7 @@ def run_query_benchmark(model_path:str, client: VLLMClient, queries: list[str], 
         model_path (str): The path to the model to use for chat completions.
         client (VLLMClient): The client to interact with the VLLM server.
         queries (list[str]): List of queries to send to the server.
-        context (str): Context to set in the chat history.
+        contexts (list[str]): List of context strings to include in the chat history.
         system_prompt (str): System prompt to initialize the chat.
     """
     results = list()
@@ -99,67 +105,79 @@ def run_query_benchmark(model_path:str, client: VLLMClient, queries: list[str], 
         progress_bar.set_description(f"Processing query {i + 1}/{len(queries)}")
         
         # Create the chat history with the system prompt and context
-        history = build_history_from_context(context, system_prompt)
+        history = build_history_from_contexts(contexts, system_prompt)
 
-        # Cold start: reset history and send query
-        client.flush_kv_cache(model_path)
-        client.set_history(history)
-        cold_metrics = client.chat(query, model_path, temperature=0.0)
-        query_results["cold"] = cold_metrics
-        print(f"Cold start metrics for query {i+1}: {cold_metrics}")
-        progress_bar.update(1)
-        time.sleep(5)
+        try:
+            # Cold start: reset history and send query
+            client.flush_kv_cache(model_path)
+            client.set_history(history)
+            cold_metrics = client.chat(query, model_path, temperature=0.0)
+            query_results["cold"] = cold_metrics
+            print(f"Cold start metrics for query {i+1}: {cold_metrics}")
+            progress_bar.update(1)
+            time.sleep(5)
 
-        # Warm start: reuse history and send query
-        client.set_history(history)
-        warm_metrics = client.chat(query, model_path, temperature=0.0)
-        query_results["warm"] = warm_metrics
-        print(f"Warm start metrics for query {i+1}: {warm_metrics}")
-        progress_bar.update(1)
-        time.sleep(5)
-
-        results.append(query_results)
+            # Warm start: reuse history and send query
+            client.set_history(history)
+            warm_metrics = client.chat(query, model_path, temperature=0.0)
+            query_results["warm"] = warm_metrics
+            print(f"Warm start metrics for query {i+1}: {warm_metrics}")
+            progress_bar.update(1)
+            time.sleep(10)
+            results.append(query_results)
+        except Exception as e:
+            print(f"Error processing query {i+1}: {e}")
+            results.append({
+                "_id": i,
+                "query": query,
+                "error": str(e),
+            })
+            progress_bar.update(2)
     
     progress_bar.close()
     return results    
 
 
-def run_session_benchmark(model_path: str, client: VLLMClient, queries: list[str], context: str, system_prompt: str):
+def run_session_benchmark(model_path: str, client: VLLMClient, queries: list[str], contexts: list[str], system_prompt: str):
     """
     Run the benchmark for a session by sending all queries to the VLLM server and collecting results.
     Args:
         model_path (str): The path to the model to use for chat completions.
         client (VLLMClient): The client to interact with the VLLM server.
         queries (list[str]): List of queries to send to the server.
-        context (str): Context to set in the chat history.
+        contexts (list[str]): List of context strings to include in the chat history.
         system_prompt (str): System prompt to initialize the chat.
     """
     results = list()
     total_runs = len(queries)
-    
-    # Cold start: reset history and send all queries
-    client.flush_kv_cache(model_path)
-    history = build_history_from_context(context, system_prompt)
+    history = build_history_from_contexts(contexts, system_prompt)
     client.set_history(history)
     progress_bar = tqdm(range(total_runs), desc="Running cold queries")
-    start_time = time.perf_counter()
-    for i, query in enumerate(queries):
-        query_result = {
-            "_id": i,
-            "query": query,
-        }
-        metrics = client.chat(query, model_path, temperature=0.0)
-        query_result["metrics"] = metrics
-        results.append(query_result)
-        progress_bar.update(1)
-    end_time = time.perf_counter()
-    duration = end_time - start_time
-    results.append({
-        "duration": duration,
-        "total_queries": len(queries),
-    })
+    
+    try:
+        # Cold start: reset history and send all queries
+        client.flush_kv_cache(model_path)
+        start_time = time.perf_counter()
+        for i, query in enumerate(queries):
+            query_result = {
+                "_id": i,
+                "query": query,
+            }
+            metrics = client.chat(query, model_path, temperature=0.0)
+            query_result["metrics"] = metrics
+            results.append(query_result)
+            progress_bar.update(1)
+        end_time = time.perf_counter()
+        duration = end_time - start_time
+    except Exception as e:
+        print(f"Error during cold queries: {e}")
+        results.append({
+            "error": str(e),
+        })
+
     progress_bar.close()
-    return results    
+    return results
+
 
 
 if __name__ == "__main__":
@@ -188,12 +206,11 @@ if __name__ == "__main__":
         default="You are a helpful assistant.",
         help="System prompt to initialize the chat",
     )
-    # TODO: What is max_ctx_tokens in their benchmark?
     parser.add_argument(
-        "--context-file",
-        type=str,
-        default=None,
-        help="Path to the context file to use for the chat. If not provided, no context will be used.",
+        "--context-files",
+        nargs="+",
+        default=list(),
+        help="List of paths to context files to use for the chat.",
     )
     parser.add_argument(
         "--prompt-file",
@@ -228,17 +245,27 @@ if __name__ == "__main__":
         default="benchmark_results.json",
         help="Path to the output file where benchmark results will be saved.",
     )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed for reproducibility.",
+    )
     args = parser.parse_args()
+    print(args)
+
+    # Set random seed for reproducibility
+    random.seed(args.seed)
 
     # Load queries and context if provided
     queries = load_queries(args.prompt_file)
-    context = load_context(
-        args.context_file,
+    contexts = load_contexts(
+        args.context_files,
         truncate=args.truncate_context,
         model_path=args.model_path,
         max_ctx_tokens=args.max_ctx_tokens,
         safety_margin=args.safety_margin,
-    ) if args.context_file else ""
+    )
     
     # Initialize the VLLM client
     client = VLLMClient(host=args.host, port=args.port, system_prompt=args.system_prompt)
@@ -249,7 +276,7 @@ if __name__ == "__main__":
             model_path=args.model_path,
             client=client,
             queries=queries,
-            context=context,
+            contexts=contexts,
             system_prompt=args.system_prompt,
         )
     elif args.mode == "session":
@@ -257,7 +284,7 @@ if __name__ == "__main__":
             model_path=args.model_path,
             client=client,
             queries=queries,
-            context=context,
+            contexts=contexts,
             system_prompt=args.system_prompt,
         )
     
