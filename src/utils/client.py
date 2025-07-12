@@ -27,7 +27,7 @@ class VLLMClient:
             api_key="EMPTY",
             base_url=f"{self.api_base_url}/v1/",
             max_retries=10,
-            timeout=120,
+            timeout=240,
         )
 
     def chat(
